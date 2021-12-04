@@ -8,18 +8,38 @@ import os
 plt.style.use("fivethirtyeight")
 
 def prepare_data(df):
+    """
+    It is used to separate the data into features and target.
+
+    Args:
+    df (pd.DataFrame): It is the pandas dataframe that contains the data.
+
+    Returns:
+        tuple: It returns the tuples of dependent and independent variables.
+    """
     X = df.drop("y", axis = 1)
 
     y = df["y"]
     return X, y
 
 def save_model(model, filename):
+    """It saves the trained model in the specified directory.
+
+    Args:
+        model (python object): trained model.
+        filename (str): Path to save the trained model.
+    """
     model_dir = "models"
     os.makedirs(model_dir, exist_ok=True)
     filePath = os.path.join(model_dir, filename)
     joblib.dump(model, filePath)
 
 def save_plot(df, filename, model):
+    """
+    :param df: It is the dataframe 
+    :param filename: It is the name of the file to save the plot
+    :param model: It is the trained model
+    """
     def _create_base_plot(df):
         df.plot(kind="scatter", x="x1", y="x2", c="y", s=100, cmap="winter")
         plt.axhline(y=0, color="black", linestyle="--", linewidth=1)
