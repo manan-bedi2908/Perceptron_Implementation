@@ -1,3 +1,8 @@
+"""
+Author: Manan Bedi
+email: mananbedilps@gmail.com
+"""
+
 from utils.model import Perceptron
 from utils.all_utils import prepare_data, save_model, save_plot
 import pandas as pd
